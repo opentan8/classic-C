@@ -182,6 +182,47 @@ void c014(){
   printf("%d\n", num);
 }
 
+void c015(){
+  /* 利用条件运算符的嵌套来完成此题：
+     学习成绩〉=90 分的同学用 A 表示，
+             60-89 分之间的用 B 表示，
+                60 分以下的用 C 表示。
+  */
+  int score; char grade;
+  printf("Input Score: "); scanf("%d", &score);
+  grade = score>=90 ? 'A' : (score>=60 ? 'B' : 'C');
+  printf("%c\n", grade);
+}
+
+void c016(){
+  // 输入两个正整数 m 和 n，求其最大公约数和最小公倍数。
+  int m, n, _m, _n, t;
+  printf("Input Two Number: "); scanf("%d %d", &m, &n);
+  if(m<=0||n<=0) { printf("Illegal Number.\n"); return; }
+  _m = m; _n = n;
+  if(_m<_n) { t=_m; _m=_n; _n=t; }
+  while(_n!=0) { t=_m%_n; _m=_n; _n=t; }
+  printf("GongYueShu: %d,\tGongBeiShu: %d.\n", _m, m*n/_m);
+}
+
+void c017(){
+  // 输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。
+  int w=0, b=0, d=0, o=0;
+  char c;
+  printf("Input Any Characters: ");
+  while((c=getchar())!='\n'){
+    if((c>='a'&&c<='z')||(c>='A'&&c<='Z')) w++;
+    else if(c==' ') b++;
+    else if(c>='0'&&c<='9') d++;
+    else o++;
+  }
+  printf("Statictis Infomations:\n");
+  printf("\tLetters Count:%d\n", w);
+  printf("\tBlanks  Count:%d\n", b);
+  printf("\tDigests Count:%d\n", d);
+  printf("\tOthers  Count:%d\n", o);
+}
+
 void main(){
-  while(true) c014();
+  while(true) c017();
 }
